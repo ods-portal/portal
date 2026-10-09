@@ -13,7 +13,14 @@ import { getCaseStatusClass } from "@/utils/patientCase";
 const HEADER_CELL_CLASS =
   "px-3 py-2 font-semibold text-blue-700 subpixel-antialiased dark:text-blue-200";
 
-const COLUMNS = ["Case ID", "Patient Name", "Country", "Case Status", "View"];
+const COLUMNS = [
+  "Case ID",
+  "Patient Name",
+  "Doctor Name",
+  "Country",
+  "Case Status",
+  "View",
+];
 
 const getDefaultRowClassName = (patient, idx) => {
   if (patient.modification?.commentSubmitted) {
@@ -66,6 +73,9 @@ const PatientsSummaryTable = ({ patients, onView, getRowClassName }) => {
                   </span>
                 )}
               </span>
+            </TableCell>
+            <TableCell className="px-3 py-2 text-center font-medium whitespace-nowrap text-gray-700 dark:text-gray-300">
+              {patient.userId?.name ?? "N/A"}
             </TableCell>
             <TableCell className="px-3 py-2 text-center text-gray-700 dark:text-gray-300">
               {patient.country || "N/A"}
